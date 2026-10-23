@@ -9,7 +9,19 @@
   "homepage": "https://github.com/codeonym-oss/groundwork",
   "repository": "https://github.com/codeonym-oss/groundwork",
   "license": "MIT",
-  "keywords": ["planning", "tickets", "stories", "epics", "grilling", "decisions", "follow-ups", "github", "gitlab", "jira", "linear"],
+  "keywords": [
+    "planning",
+    "tickets",
+    "stories",
+    "epics",
+    "grilling",
+    "decisions",
+    "follow-ups",
+    "github",
+    "gitlab",
+    "jira",
+    "linear"
+  ],
   "skills": [
     "./skills/init",
     "./skills/shape",
