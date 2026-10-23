@@ -1,0 +1,23 @@
+{
+  "name": "groundwork",
+  "version": "0.1.0",
+  "description": "Plan work before building it. Grill an idea into epics, stories and tickets, keep every decision in a folder tree, draft the tracker issues, plan each ticket against the code as it is, and build it, asking before every write outside the planning folder.",
+  "author": {
+    "name": "codeonym",
+    "url": "https://github.com/codeonym"
+  },
+  "homepage": "https://github.com/codeonym-oss/groundwork",
+  "repository": "https://github.com/codeonym-oss/groundwork",
+  "license": "MIT",
+  "keywords": ["planning", "tickets", "stories", "epics", "grilling", "decisions", "follow-ups", "github", "gitlab", "jira", "linear"],
+  "skills": [
+    "./skills/init",
+    "./skills/shape",
+    "./skills/create-epic",
+    "./skills/create-story",
+    "./skills/create-ticket",
+    "./skills/implement",
+    "./skills/follow-up",
+    "./skills/list-follow-ups"
+  ]
+}
