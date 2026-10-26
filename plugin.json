@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "groundwork",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Plan work before building it. Grill an idea into epics, stories and tickets, keep every decision in a folder tree, draft the tracker issues, plan each ticket against the code as it is, and build it, asking before every write outside the planning folder.",
   "author": {
     "name": "codeonym",
