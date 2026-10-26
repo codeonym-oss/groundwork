@@ -20,6 +20,9 @@ claude --plugin-dir /path/to/groundwork
 
 ## How the repo is laid out
 
+- `.claude-plugin/plugin.json` (Claude Code) and `plugin.json` (the portable manifest Codex reads, with its
+  `extensions.com.openai` display fields): keep their shared fields identical (a test checks it). Claude Code
+  lists the skills; Codex finds them in `skills/`.
 - `skills/<skill>/SKILL.md`: one per skill, short. Each reads the shared files it needs from `references/`.
 - `references/`: the rules every skill shares. `structure.md` (the planning tree), `grilling.md` (how questions are
   asked), `approval.md` (what needs a yes), `drafting.md` (the create flow), `trackers/` (one guide per tracker).
@@ -44,4 +47,4 @@ A rule belongs in one place. If two skills need it, it goes in `references/` and
 
 `main` is protected: work on a branch named after the issue (`<n>-short-name`) and open a pull request whose title is
 a conventional commit (`feat(shape): …`, `fix(init): …`) with `Fixes #<n>` in the body. release-please builds the
-version and the changelog from those titles; don't edit `VERSION` or `plugin.json`'s version by hand.
+version and the changelog from those titles; don't edit `VERSION` or either manifest's version by hand.

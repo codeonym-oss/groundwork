@@ -1,9 +1,11 @@
 # groundwork
 
-**Plan work before building it.** groundwork is a Claude Code plugin that turns an idea into epics, stories and
+**Plan work before building it.** groundwork is a plugin for Claude Code and Codex that turns an idea into epics, stories and
 tickets through short grilling sessions, keeps every decision in a folder tree next to your code, drafts the tracker
 issues, plans each ticket against the code as it is that day, and builds it. It asks before every write outside the
 planning folder.
+
+**New here?** Read the [usage guide](docs/usage.md): install, setup, and a walk from idea to merged pull request.
 
 ```
 /groundwork:shape          "the checkout feels slow and nobody knows why"  → a story, split in three tickets
@@ -29,10 +31,24 @@ session, and asked again by the next ticket. groundwork makes them explicit:
 
 ## Install
 
+groundwork is published in the [codeonym-oss marketplace](https://github.com/codeonym-oss/claude-plugins).
+
+**Claude Code:**
+
 ```
 /plugin marketplace add codeonym-oss/claude-plugins
 /plugin install groundwork@codeonym-oss
 ```
+
+**Codex** (a Codex CLI that supports `codex plugin`), in your terminal:
+
+```bash
+codex plugin marketplace add codeonym-oss/claude-plugins
+codex plugin add groundwork@codeonym-oss
+```
+
+Then start a new Codex session. If you added the marketplace before it supported Codex, refresh it first with
+`codex plugin marketplace upgrade codeonym-oss`.
 
 Then, in your project:
 
@@ -40,11 +56,14 @@ Then, in your project:
 /groundwork:init
 ```
 
+In Codex, which has no `/groundwork:…` commands, find the skills with `/skills` or ask for one by name ("use
+groundwork's init skill"). See [Using groundwork in Codex](docs/usage.md#using-groundwork-in-codex).
+
 `init` checks your tools, detects the forge (`gh` or `glab`), asks which tracker you use and your project's own
 rules (what a story point means, the language of issue titles…), writes them to `groundwork.md`, offers to add
 [Andrej Karpathy's coding guidelines](https://github.com/multica-ai/andrej-karpathy-skills) to `AGENTS.md` and
 `CLAUDE.md`, and offers to install [Matt Pocock's skills](https://github.com/mattpocock/skills) that
-`implement` builds with. Every step asks first.
+`implement` builds with. Every step asks first. The [usage guide](docs/usage.md#set-up-a-project) goes through each step.
 
 ## Skills
 
@@ -95,17 +114,18 @@ linked, moved and closed, so a write to your shared board is never improvised. A
 
 ## Works with any coding agent
 
-groundwork is built and tested as a Claude Code plugin. But its skills are plain `SKILL.md` files and its planning
-tree is plain Markdown, so any agent can follow the same workflow:
+groundwork installs as a plugin in **Claude Code** and **Codex** (see [Install](#install)). Its skills are plain
+`SKILL.md` files and its planning tree is plain Markdown, so other agents can follow the same workflow too:
 
-- **Agents that load skills** (Codex, Cursor, Gemini CLI and others): point them at this repo's `skills/` folder;
-  each skill reads the shared `references/` through relative paths.
+- **Agents that load skills** (Cursor, Gemini CLI and others): point them at this repo's `skills/` folder; each
+  skill reads the shared `references/` through relative paths.
 - **Any agent at all:** the planning tree is just files. An agent that reads `groundwork.md`,
   `references/structure.md` and a level's `decisions/` can plan and build within the same rules.
 - `init` writes the coding guidelines into `AGENTS.md`, which Codex, Cursor and Gemini CLI read, and points
   `CLAUDE.md` at it.
 
-Only Claude Code is tested today. Reports from other agents are welcome.
+groundwork is built and tested in Claude Code. Its Codex install has been checked; reports on how the workflow
+behaves in Codex and other agents are welcome.
 
 ## How it differs from Matt Pocock's skills
 
