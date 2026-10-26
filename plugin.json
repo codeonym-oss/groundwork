@@ -1,0 +1,42 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "groundwork",
+  "version": "0.1.0",
+  "description": "Plan work before building it. Grill an idea into epics, stories and tickets, keep every decision in a folder tree, draft the tracker issues, plan each ticket against the code as it is, and build it, asking before every write outside the planning folder.",
+  "author": {
+    "name": "codeonym",
+    "url": "https://github.com/codeonym"
+  },
+  "homepage": "https://github.com/codeonym-oss/groundwork",
+  "repository": "https://github.com/codeonym-oss/groundwork",
+  "license": "MIT",
+  "keywords": [
+    "planning",
+    "tickets",
+    "stories",
+    "epics",
+    "grilling",
+    "decisions",
+    "follow-ups",
+    "github",
+    "gitlab",
+    "jira",
+    "linear"
+  ],
+  "extensions": {
+    "com.openai": {
+      "onboardingSkill": "./skills/init/SKILL.md",
+      "interface": {
+        "displayName": "groundwork",
+        "shortDescription": "Plan work before building it",
+        "longDescription": "Grill an idea into epics, stories and tickets, keep every decision in a folder tree next to your code, draft the tracker issues, plan each ticket against the code as it is that day, and build it, asking before every write outside the planning folder.",
+        "developerName": "codeonym",
+        "category": "Productivity",
+        "websiteURL": "https://github.com/codeonym-oss/groundwork",
+        "defaultPrompt": "Use groundwork's shape skill to work out what to build next.",
+        "composerIcon": "./.claude-plugin/icon.png",
+        "logo": "./.claude-plugin/icon.png"
+      }
+    }
+  }
+}

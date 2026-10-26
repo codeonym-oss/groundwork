@@ -25,6 +25,7 @@ def frontmatter(path: Path) -> dict:
 class RepoTest(unittest.TestCase):
     def setUp(self):
         self.manifest = json.loads((REPO / ".claude-plugin/plugin.json").read_text())
+        self.portable = json.loads((REPO / "plugin.json").read_text())
 
     def test_every_listed_skill_has_a_named_skill_md(self):
         for entry in self.manifest["skills"]:
@@ -42,8 +43,21 @@ class RepoTest(unittest.TestCase):
     def test_versions_agree(self):
         version = (REPO / "VERSION").read_text().strip()
         self.assertEqual(self.manifest["version"], version)
+        self.assertEqual(self.portable["version"], version)
         manifest = json.loads((REPO / ".release-please-manifest.json").read_text())
         self.assertEqual(manifest["."], version)
+
+    def test_portable_manifest_matches_the_claude_one(self):
+        # Codex reads the portable plugin.json and finds the skills in skills/ itself.
+        allowed = {"$schema", "name", "version", "description", "author", "homepage", "repository", "license",
+                   "keywords", "extensions"}
+        self.assertLessEqual(set(self.portable), allowed)
+        for field in allowed - {"$schema", "extensions"}:
+            self.assertEqual(self.portable[field], self.manifest[field], field)
+        openai = self.portable["extensions"]["com.openai"]
+        self.assertTrue((REPO / openai["onboardingSkill"]).is_file())
+        for key in ("composerIcon", "logo"):
+            self.assertTrue((REPO / openai["interface"][key]).is_file(), key)
 
     def test_referenced_files_exist(self):
         pattern = re.compile(r"<skill-dir>/(\.\./\.\./references/[\w./-]+?\.md|scripts/[\w.-]+)")
