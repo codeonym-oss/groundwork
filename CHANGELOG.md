@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.0](https://github.com/codeonym-oss/groundwork/compare/v0.1.0...v0.2.0) (2026-10-26)
+
+
+### Features
+
+* add a usage guide and the Codex manifest ([#15](https://github.com/codeonym-oss/groundwork/issues/15)) ([7af4c48](https://github.com/codeonym-oss/groundwork/commit/7af4c481004752742ada64f11daf45cbaee71b5e))
+
 ## [0.1.0](https://github.com/codeonym-oss/groundwork/compare/v0.1.0...v0.1.0) (2026-10-23)
 
 
